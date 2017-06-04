@@ -1,0 +1,24 @@
+apply plugin: 'java'
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.mollin.lightsoutsolver.core.solver.Examples'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    JUNIT_V = '4.12'
+    JUNIT_PARAMS_V = '1.1.0'
+    ASSERTJ_V = '3.8.0'
+}
+
+dependencies {
+    testCompile "junit:junit:$JUNIT_V"
+    testCompile "pl.pragmatists:JUnitParams:$JUNIT_PARAMS_V"
+    testCompile "org.assertj:assertj-core:$ASSERTJ_V"
+}
