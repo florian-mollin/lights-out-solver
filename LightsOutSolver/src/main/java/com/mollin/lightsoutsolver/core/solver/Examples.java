@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Optional;
 
 /**
- * Classe contenant les exemples
+ * Classe contenant les exemples.
  *
  * @author MOLLIN Florian
  */
