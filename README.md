@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/florian-mollin/lights-out-solver.svg?branch=master)](https://travis-ci.org/florian-mollin/lights-out-solver)
+
 # Java Lights Out Solver
 ## Examples
 ### Example 1 : compute all solutions
