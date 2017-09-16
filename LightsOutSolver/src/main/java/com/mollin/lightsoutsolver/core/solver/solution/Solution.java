@@ -25,8 +25,8 @@ public class Solution extends HashSet<Coord> {
         super();
         if (coordToValue != null) {
             coordToValue.entrySet().stream()
-                    .filter(entry -> entry.getValue())
-                    .map(entry -> entry.getKey())
+                    .filter(Map.Entry::getValue)
+                    .map(Map.Entry::getKey)
                     .forEach(this::add);
         }
     }

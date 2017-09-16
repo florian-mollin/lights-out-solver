@@ -30,9 +30,7 @@ public class SolverTest {
     /**
      * Pattern 'vide'
      */
-    private static final PatternInterface EMPTY_PATTERN = (coord) -> {
-        return new HashSet<>();
-    };
+    private static final PatternInterface EMPTY_PATTERN = (coord) -> new HashSet<>();
 
     /**
      * Paramètres pour le test de présence de solution vide.
@@ -40,7 +38,7 @@ public class SolverTest {
      * @return Les paramètres du test
      */
     private Object[] parametersForEmptySolution() {
-        GridInterface nonConstantGrid = GridUtils.getGridWithSomeActivatedCoords(2, 2, Arrays.asList(
+        GridInterface nonConstantGrid = GridUtils.getGridWithSomeActivatedCoords(2, 2, Collections.singletonList(
                 Coord.of(0, 0)
         ));
         return new Object[][]{
@@ -95,13 +93,11 @@ public class SolverTest {
      */
     private Object[] parametersForNoSolution() {
         // création d'un pattern 'impossible' pour résoudre une grille vide -> pleine
-        PatternInterface impossiblePattern = (coord) -> {
-            return new HashSet<>(Arrays.asList(
-                    coord.add(Coord.of(-1, 0)),
-                    coord.add(Coord.of(-1, 1)),
-                    coord.add(Coord.of(0, -1))
-            ));
-        };
+        PatternInterface impossiblePattern = (coord) -> new HashSet<>(Arrays.asList(
+                coord.add(Coord.of(-1, 0)),
+                coord.add(Coord.of(-1, 1)),
+                coord.add(Coord.of(0, -1))
+        ));
         return new Object[][]{
                 // grille vide -> pleine avec un pattern vide
                 {GridUtils.getEmptyGrid(3, 3), GridUtils.getFullGrid(3, 3), EMPTY_PATTERN},
@@ -212,12 +208,12 @@ public class SolverTest {
      */
     private Set<Coord> getSwitchedCoordsOfSolutionWithPattern(Solution solution, PatternInterface pattern) {
         return solution.stream()
-                .map(coord -> pattern.getSwitchedCoords(coord))
+                .map(pattern::getSwitchedCoords)
                 .flatMap(Set::stream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
                 .filter(entry -> entry.getValue() % 2 == 1)
-                .map(entry -> entry.getKey())
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
     }
 

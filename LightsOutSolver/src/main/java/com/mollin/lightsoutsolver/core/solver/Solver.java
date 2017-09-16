@@ -219,7 +219,7 @@ public class Solver {
                     sol.remove(this.goalCoord);
                     return sol;
                 })
-                .forEach(sol -> solutions.addSolution(sol));
+                .forEach(solutions::addSolution);
         return solutions;
     }
 

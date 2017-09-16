@@ -63,14 +63,12 @@ public class Examples {
     private static void example4() {
         GridInterface startGrid = GridUtils.getEmptyGrid(42, 42);
         // custom pattern
-        PatternInterface pattern = (coord) -> {
-            return new HashSet<>(Arrays.asList(
-                    coord.add(Coord.of(1, 1)), coord.add(Coord.of(-1, -1)),
-                    coord.add(Coord.of(-1, 1)), coord.add(Coord.of(1, -1)),
-                    coord.add(Coord.of(1, 0)), coord.add(Coord.of(0, 1)),
-                    coord.add(Coord.of(-1, 0)), coord.add(Coord.of(0, -1))
-            ));
-        };
+        PatternInterface pattern = coord -> new HashSet<>(Arrays.asList(
+                coord.add(Coord.of(1, 1)), coord.add(Coord.of(-1, -1)),
+                coord.add(Coord.of(-1, 1)), coord.add(Coord.of(1, -1)),
+                coord.add(Coord.of(1, 0)), coord.add(Coord.of(0, 1)),
+                coord.add(Coord.of(-1, 0)), coord.add(Coord.of(0, -1))
+        ));
 
         // by default, finalGrid is full
         Solver solver = new Solver(startGrid, pattern);
@@ -91,14 +89,12 @@ public class Examples {
 
     private static void fun2() {
         GridInterface startGrid = GridUtils.getEmptyGrid(250, 250);
-        PatternInterface pattern = (coord) -> {
-            return new HashSet<>(Arrays.asList(
-                    coord.add(Coord.of(1, 1)), coord.add(Coord.of(-1, -1)),
-                    coord.add(Coord.of(-1, 1)), coord.add(Coord.of(1, -1)),
-                    coord.add(Coord.of(1, 0)), coord.add(Coord.of(0, 1)),
-                    coord.add(Coord.of(-1, 0)), coord.add(Coord.of(0, -1))
-            ));
-        };
+        PatternInterface pattern = coord -> new HashSet<>(Arrays.asList(
+                coord.add(Coord.of(1, 1)), coord.add(Coord.of(-1, -1)),
+                coord.add(Coord.of(-1, 1)), coord.add(Coord.of(1, -1)),
+                coord.add(Coord.of(1, 0)), coord.add(Coord.of(0, 1)),
+                coord.add(Coord.of(-1, 0)), coord.add(Coord.of(0, -1))
+        ));
 
         Solver solver = new Solver(startGrid, pattern);
         Optional<Solution> firstSolution = solver.findFirstSolution();

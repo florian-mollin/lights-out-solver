@@ -85,8 +85,8 @@ public class Equation {
      */
     public void fillValue(Coord unknownWithoutValue, Map<Coord, Boolean> unknownsValues) {
         boolean value = this.unknowns.stream()
-                .filter((u) -> u != unknownWithoutValue)
-                .map((u) -> unknownsValues.get(u))
+                .filter(u -> u != unknownWithoutValue)
+                .map(unknownsValues::get)
                 .reduce(false, (b1, b2) -> b1 ^ b2);
         unknownsValues.put(unknownWithoutValue, value);
     }

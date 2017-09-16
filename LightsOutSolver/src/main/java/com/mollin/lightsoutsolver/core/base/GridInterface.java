@@ -15,14 +15,14 @@ public interface GridInterface {
      *
      * @return Le nombre de ligne de la grille
      */
-    public int rows();
+    int rows();
 
     /**
      * Nombre de colonnes de la grille
      *
      * @return Le nombre de colonnes de la grille
      */
-    public int columns();
+    int columns();
 
     /**
      * Test si une case est active ou non
@@ -30,5 +30,5 @@ public interface GridInterface {
      * @param coord La coordonnée de la case à tester
      * @return Vrai si la case est active
      */
-    public boolean isActivated(Coord coord);
+    boolean isActivated(Coord coord);
 }

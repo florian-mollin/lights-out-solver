@@ -20,5 +20,5 @@ public interface PatternInterface {
      * @return Les coordonnées des cases à 'switcher' lors de l'application du
      * pattern sur la case de coordonée 'coord'
      */
-    public Set<Coord> getSwitchedCoords(Coord coord);
+    Set<Coord> getSwitchedCoords(Coord coord);
 }

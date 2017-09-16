@@ -12,6 +12,12 @@ import java.util.Collection;
  */
 public class GridUtils {
     /**
+     * Constructeur privé car classe utilitaire
+     */
+    private GridUtils() {
+    }
+
+    /**
      * Retourne une grille remplie uniformement
      *
      * @param rows    Le nombre de lignes de la grille

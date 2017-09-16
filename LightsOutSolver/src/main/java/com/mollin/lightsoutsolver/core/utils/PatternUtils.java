@@ -12,17 +12,21 @@ import java.util.HashSet;
  */
 public class PatternUtils {
     /**
+     * Constructeur privé car classe utilitaire
+     */
+    private PatternUtils() {
+    }
+
+    /**
      * Pattern 'classique'
      */
-    private static final PatternInterface CLASSIC_PATTERN = (coord) -> {
-        return new HashSet<>(Arrays.asList(
-                coord.add(Coord.of(0, 0)),
-                coord.add(Coord.of(1, 0)),
-                coord.add(Coord.of(0, 1)),
-                coord.add(Coord.of(-1, 0)),
-                coord.add(Coord.of(0, -1))
-        ));
-    };
+    private static final PatternInterface CLASSIC_PATTERN = coord -> new HashSet<>(Arrays.asList(
+            coord.add(Coord.of(0, 0)),
+            coord.add(Coord.of(1, 0)),
+            coord.add(Coord.of(0, 1)),
+            coord.add(Coord.of(-1, 0)),
+            coord.add(Coord.of(0, -1))
+    ));
 
     /**
      * Retourne le pattern 'classique'
