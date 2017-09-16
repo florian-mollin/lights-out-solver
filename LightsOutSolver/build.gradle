@@ -1,11 +1,8 @@
+version '1.0'
+
 apply plugin: 'java'
 
-sourceCompatibility = '1.8'
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-if (!hasProperty('mainClass')) {
-    ext.mainClass = 'com.mollin.lightsoutsolver.core.solver.Examples'
-}
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
