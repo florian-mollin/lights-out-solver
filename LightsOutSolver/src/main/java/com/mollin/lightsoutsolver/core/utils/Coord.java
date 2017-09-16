@@ -19,7 +19,7 @@ public class Coord {
     /**
      * Constructeur d'une coordonnée avec ligne et colonne.
      *
-     * @param row La ligne de la coordonnée
+     * @param row    La ligne de la coordonnée
      * @param column La colonne de la coordonnée
      */
     public Coord(int row, int column) {
@@ -30,7 +30,7 @@ public class Coord {
     /**
      * Constructeur d'une coordonnée avec ligne et colonne.
      *
-     * @param row La ligne de la coordonnée
+     * @param row    La ligne de la coordonnée
      * @param column La colonne de la coordonnée
      * @return La coordonnée (ligne, colonne)
      */

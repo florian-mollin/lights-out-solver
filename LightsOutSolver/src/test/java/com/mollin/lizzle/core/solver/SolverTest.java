@@ -1,27 +1,24 @@
 package com.mollin.lizzle.core.solver;
 
-import com.mollin.lightsoutsolver.core.solver.Solver;
 import com.mollin.lightsoutsolver.core.base.GridInterface;
 import com.mollin.lightsoutsolver.core.base.PatternInterface;
+import com.mollin.lightsoutsolver.core.solver.Solver;
 import com.mollin.lightsoutsolver.core.solver.solution.Solution;
 import com.mollin.lightsoutsolver.core.solver.solution.Solutions;
 import com.mollin.lightsoutsolver.core.utils.Coord;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mollin.lightsoutsolver.core.utils.GridUtils;
+import com.mollin.lightsoutsolver.core.utils.PatternUtils;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
 import org.junit.runner.RunWith;
-import com.mollin.lightsoutsolver.core.utils.GridUtils;
-import com.mollin.lightsoutsolver.core.utils.PatternUtils;
-import java.util.Optional;
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Classe de test pour le solveur
@@ -47,18 +44,18 @@ public class SolverTest {
                 Coord.of(0, 0)
         ));
         return new Object[][]{
-            // grille pleine -> pleine avec un pattern classique
-            {GridUtils.getFullGrid(5, 5), PatternUtils.getClassicPattern()},
-            // grille pleine -> pleine avec un pattern vide
-            {GridUtils.getFullGrid(2, 2), EMPTY_PATTERN},
-            // grille vide -> vide avec un pattern classique
-            {GridUtils.getEmptyGrid(5, 5), PatternUtils.getClassicPattern()},
-            // grille vide -> vide avec un pattern vide
-            {GridUtils.getEmptyGrid(2, 2), EMPTY_PATTERN},
-            // grille irrégulière -> irrégulière avec pattern classique
-            {nonConstantGrid, PatternUtils.getClassicPattern()},
-            // grille irrégulière -> irrégulière avec pattern vide
-            {nonConstantGrid, EMPTY_PATTERN}
+                // grille pleine -> pleine avec un pattern classique
+                {GridUtils.getFullGrid(5, 5), PatternUtils.getClassicPattern()},
+                // grille pleine -> pleine avec un pattern vide
+                {GridUtils.getFullGrid(2, 2), EMPTY_PATTERN},
+                // grille vide -> vide avec un pattern classique
+                {GridUtils.getEmptyGrid(5, 5), PatternUtils.getClassicPattern()},
+                // grille vide -> vide avec un pattern vide
+                {GridUtils.getEmptyGrid(2, 2), EMPTY_PATTERN},
+                // grille irrégulière -> irrégulière avec pattern classique
+                {nonConstantGrid, PatternUtils.getClassicPattern()},
+                // grille irrégulière -> irrégulière avec pattern vide
+                {nonConstantGrid, EMPTY_PATTERN}
         };
     }
 
@@ -67,7 +64,7 @@ public class SolverTest {
      * solutions. Le solveur utilisera la même grille de départ et d'arrivée
      * afin de générer une solution vide.
      *
-     * @param grid Grille de départ et d'arrivée pour le solveur
+     * @param grid    Grille de départ et d'arrivée pour le solveur
      * @param pattern Pattern utilisé par le solveur
      */
     @Test
@@ -106,12 +103,12 @@ public class SolverTest {
             ));
         };
         return new Object[][]{
-            // grille vide -> pleine avec un pattern vide
-            {GridUtils.getEmptyGrid(3, 3), GridUtils.getFullGrid(3, 3), EMPTY_PATTERN},
-            // grille vide -> pleine avec un pattern 'impossible'
-            {GridUtils.getEmptyGrid(5, 4), GridUtils.getFullGrid(5, 4), impossiblePattern},
-            // grille vide -> grille inatteignable avec un pattern classique
-            {GridUtils.getEmptyGrid(5, 5), GridUtils.getGridWithSomeActivatedCoords(5, 5, Coord.of(0, 0)), PatternUtils.getClassicPattern()}
+                // grille vide -> pleine avec un pattern vide
+                {GridUtils.getEmptyGrid(3, 3), GridUtils.getFullGrid(3, 3), EMPTY_PATTERN},
+                // grille vide -> pleine avec un pattern 'impossible'
+                {GridUtils.getEmptyGrid(5, 4), GridUtils.getFullGrid(5, 4), impossiblePattern},
+                // grille vide -> grille inatteignable avec un pattern classique
+                {GridUtils.getEmptyGrid(5, 5), GridUtils.getGridWithSomeActivatedCoords(5, 5, Coord.of(0, 0)), PatternUtils.getClassicPattern()}
         };
     }
 
@@ -120,8 +117,8 @@ public class SolverTest {
      * configuration du solveur.
      *
      * @param startGrid Grille de départ
-     * @param endGrid Grille d'arrivée
-     * @param pattern Le pattern
+     * @param endGrid   Grille d'arrivée
+     * @param pattern   Le pattern
      */
     @Test
     @Parameters
@@ -147,8 +144,8 @@ public class SolverTest {
      */
     private Object[] parametersForSpecificSolution() {
         return new Object[][]{
-            {GridUtils.getEmptyGrid(5, 5), PatternUtils.getClassicPattern(), new Solution(Coord.of(0, 0), Coord.of(3, 4))},
-            {GridUtils.getEmptyGrid(3, 3), PatternUtils.getClassicPattern(), new Solution(Coord.of(0, 0), Coord.of(1, 1), Coord.of(2, 2))}
+                {GridUtils.getEmptyGrid(5, 5), PatternUtils.getClassicPattern(), new Solution(Coord.of(0, 0), Coord.of(3, 4))},
+                {GridUtils.getEmptyGrid(3, 3), PatternUtils.getClassicPattern(), new Solution(Coord.of(0, 0), Coord.of(1, 1), Coord.of(2, 2))}
         };
     }
 
@@ -158,8 +155,8 @@ public class SolverTest {
      * donné) afin de tester que le solveur trouve cette solution lors de la
      * résolution
      *
-     * @param startGrid Grille de départ
-     * @param pattern Le pattern
+     * @param startGrid      Grille de départ
+     * @param pattern        Le pattern
      * @param solutionToFind La solution attendue
      */
     @Test
@@ -208,8 +205,8 @@ public class SolverTest {
      * coordonnées, même celles hors grille (il faudra filtrer)
      *
      * @param solution La solution contenant les coordonnées sur lesquelles
-     * appliquer le pattern
-     * @param pattern Le pattern à appliquer
+     *                 appliquer le pattern
+     * @param pattern  Le pattern à appliquer
      * @return Les coordonnées à switcher suite à l'application du pattern sur
      * la solution
      */
@@ -251,9 +248,9 @@ public class SolverTest {
         for (int r = 0; r <= limitRow; r++) {
             for (int c = 0; c <= limitColumn; c++) {
                 parameters.add(new Object[]{
-                    GridUtils.getEmptyGrid(r, c),
-                    GridUtils.getFullGrid(r, c),
-                    PatternUtils.getClassicPattern()
+                        GridUtils.getEmptyGrid(r, c),
+                        GridUtils.getFullGrid(r, c),
+                        PatternUtils.getClassicPattern()
                 });
             }
         }
@@ -265,8 +262,8 @@ public class SolverTest {
      * correctes.
      *
      * @param startGrid Grille de départ
-     * @param endGrid Grille de fin
-     * @param pattern Le pattern
+     * @param endGrid   Grille de fin
+     * @param pattern   Le pattern
      */
     @Test
     @Parameters
@@ -297,11 +294,11 @@ public class SolverTest {
      */
     private Object[] parametersForLimitSolutions() {
         return new Object[][]{
-            {4, 4, 0, 16, 0},
-            {4, 4, 1, 16, 1},
-            {4, 4, 16, 16, 16},
-            {4, 4, 42, 16, 16},
-            {23, 47, 3, 4194304, 3}
+                {4, 4, 0, 16, 0},
+                {4, 4, 1, 16, 1},
+                {4, 4, 16, 16, 16},
+                {4, 4, 42, 16, 16},
+                {23, 47, 3, 4194304, 3}
         };
     }
 
@@ -310,13 +307,13 @@ public class SolverTest {
      * calculer. Ce test s'effectuera uniquement d'une grille vide vers une
      * grille pleine
      *
-     * @param rows Le nombre de lignes des grilles
-     * @param columns Le nombre de colonnes des grilles
-     * @param limitNbSolution Le nombre limite de solutions à calculer
-     * @param expectedNbTotalSolutions Le nombre total de solutions attendues de
-     * la grille
+     * @param rows                        Le nombre de lignes des grilles
+     * @param columns                     Le nombre de colonnes des grilles
+     * @param limitNbSolution             Le nombre limite de solutions à calculer
+     * @param expectedNbTotalSolutions    Le nombre total de solutions attendues de
+     *                                    la grille
      * @param expectedNbComputedSolutions Le nombre de solutions calculées
-     * attendues
+     *                                    attendues
      */
     @Test
     @Parameters

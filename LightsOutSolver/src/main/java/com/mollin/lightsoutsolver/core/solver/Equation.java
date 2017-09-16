@@ -1,6 +1,7 @@
 package com.mollin.lightsoutsolver.core.solver;
 
 import com.mollin.lightsoutsolver.core.utils.Coord;
+
 import java.util.Map;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ public class Equation {
      */
     public void xor(Equation eq) {
         eq.unknowns.forEach(e -> {
-            if(!this.unknowns.remove(e)) {
+            if (!this.unknowns.remove(e)) {
                 this.unknowns.add(e);
             }
         });
@@ -79,8 +80,8 @@ public class Equation {
      * paramètre) possèdent des valeurs dans la table.
      *
      * @param unknownWithoutValue L'inconnue à trouver
-     * @param unknownsValues La table à remplir avec la valeur de l'inconnue trouvée.
-     * (Table servant aussi à trouver la valeur de l'inconnue)
+     * @param unknownsValues      La table à remplir avec la valeur de l'inconnue trouvée.
+     *                            (Table servant aussi à trouver la valeur de l'inconnue)
      */
     public void fillValue(Coord unknownWithoutValue, Map<Coord, Boolean> unknownsValues) {
         boolean value = this.unknowns.stream()

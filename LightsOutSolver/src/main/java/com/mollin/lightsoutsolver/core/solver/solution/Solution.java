@@ -1,6 +1,7 @@
 package com.mollin.lightsoutsolver.core.solver.solution;
 
 import com.mollin.lightsoutsolver.core.utils.Coord;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,8 +18,8 @@ public class Solution extends HashSet<Coord> {
      * Constructeur d'une solution (utiliser principalement par le Solver)
      *
      * @param coordToValue La table faisant la correspondance entre une
-     * coordonnée et son état (si l'on doit appliquer ou non le pattern sur
-     * celle-ci)
+     *                     coordonnée et son état (si l'on doit appliquer ou non le pattern sur
+     *                     celle-ci)
      */
     public Solution(Map<Coord, Boolean> coordToValue) {
         super();
@@ -34,7 +35,7 @@ public class Solution extends HashSet<Coord> {
      * Constructeur d'une solution.
      *
      * @param coords Ensemble des coordonnées sur lesquelles appliquer le
-     * pattern
+     *               pattern
      */
     public Solution(Coord... coords) {
         super(Arrays.asList(coords));

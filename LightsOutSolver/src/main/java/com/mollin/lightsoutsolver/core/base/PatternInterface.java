@@ -1,6 +1,7 @@
 package com.mollin.lightsoutsolver.core.base;
 
 import com.mollin.lightsoutsolver.core.utils.Coord;
+
 import java.util.Set;
 
 /**

@@ -25,7 +25,7 @@ public class Solutions {
      * contiendra pas de solution calculée (qui seront à ajouter par la suite)
      *
      * @param nbSolutions Le nombre de solutions différentes pour résoudre la
-     * grille
+     *                    grille
      */
     public Solutions(long nbSolutions) {
         this.nbSolutions = nbSolutions;

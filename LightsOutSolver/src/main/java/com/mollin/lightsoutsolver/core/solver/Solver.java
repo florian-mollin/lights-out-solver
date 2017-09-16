@@ -1,19 +1,13 @@
 package com.mollin.lightsoutsolver.core.solver;
 
-import com.mollin.lightsoutsolver.core.base.PatternInterface;
 import com.mollin.lightsoutsolver.core.base.GridInterface;
+import com.mollin.lightsoutsolver.core.base.PatternInterface;
 import com.mollin.lightsoutsolver.core.solver.solution.Solution;
 import com.mollin.lightsoutsolver.core.solver.solution.Solutions;
 import com.mollin.lightsoutsolver.core.utils.Coord;
 import com.mollin.lightsoutsolver.core.utils.GridUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,9 +48,9 @@ public class Solver {
      * Constructeur du solveur.
      *
      * @param startGrid Grille de départ à partir de laquelle trouver la
-     * solution
-     * @param endGrid Grille à atteindre
-     * @param pattern Pattern utilisé dans la grille
+     *                  solution
+     * @param endGrid   Grille à atteindre
+     * @param pattern   Pattern utilisé dans la grille
      */
     public Solver(GridInterface startGrid, GridInterface endGrid, PatternInterface pattern) {
         this.startGrid = startGrid;
@@ -70,8 +64,8 @@ public class Solver {
      * (toutes les cases allumées).
      *
      * @param startGrid Grille de départ à partir de laquelle trouver la
-     * solution
-     * @param pattern Pattern utilisé dans la grille
+     *                  solution
+     * @param pattern   Pattern utilisé dans la grille
      */
     public Solver(GridInterface startGrid, PatternInterface pattern) {
         this(startGrid, GridUtils.getFullGrid(startGrid.rows(), startGrid.columns()), pattern);
@@ -132,7 +126,7 @@ public class Solver {
      * produire un système triangulaire.
      *
      * @param maxSolutions Le nombre maximum de solutions à trouver. (si
-     * négatif, renvoit toutes les solutions)
+     *                     négatif, renvoit toutes les solutions)
      * @return L'ensemble des solutions pour résoudre le système.
      */
     public Solutions solve(int maxSolutions) {
@@ -148,7 +142,7 @@ public class Solver {
                 Set<Equation> matchedEquations = notLockedEquations.stream()
                         .filter(e -> e.match(acCoord))
                         .collect(Collectors.toSet());
-                if(!matchedEquations.isEmpty()) {
+                if (!matchedEquations.isEmpty()) {
                     // si une équation est trouvée, on la vérouille, et on supprime
                     // (r,c) des autres équations
                     Equation acEquation = matchedEquations.iterator().next();

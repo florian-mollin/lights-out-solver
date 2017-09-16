@@ -7,6 +7,7 @@ import com.mollin.lightsoutsolver.core.solver.solution.Solutions;
 import com.mollin.lightsoutsolver.core.utils.Coord;
 import com.mollin.lightsoutsolver.core.utils.GridUtils;
 import com.mollin.lightsoutsolver.core.utils.PatternUtils;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
@@ -28,7 +29,7 @@ public class Examples {
 
         System.out.println(solutions);
     }
-    
+
     private static void example2() {
         GridInterface startGrid = GridUtils.getEmptyGrid(20, 20);
         GridInterface finalGrid = GridUtils.getFullGrid(20, 20);
@@ -37,10 +38,10 @@ public class Examples {
         Solver solver = new Solver(startGrid, finalGrid, pattern);
         // compute only the first one solution (if exists)
         Optional<Solution> firstSolution = solver.findFirstSolution();
-        
+
         firstSolution.ifPresent(System.out::println);
     }
-    
+
     private static void example3() {
         // custom start grid
         GridInterface startGrid = GridUtils.getGridWithSomeActivatedCoords(3, 3,
@@ -58,7 +59,7 @@ public class Examples {
 
         System.out.println(solutions);
     }
-    
+
     private static void example4() {
         GridInterface startGrid = GridUtils.getEmptyGrid(42, 42);
         // custom pattern
@@ -77,17 +78,17 @@ public class Examples {
 
         firstSolution.ifPresent(System.out::println);
     }
-    
+
     private static void fun1() {
         GridInterface startGrid = GridUtils.getEmptyGrid(250, 250);
         PatternInterface pattern = PatternUtils.getClassicPattern();
-        
+
         Solver solver = new Solver(startGrid, pattern);
         Optional<Solution> firstSolution = solver.findFirstSolution();
-        
+
         firstSolution.ifPresent(System.out::println);
     }
-    
+
     private static void fun2() {
         GridInterface startGrid = GridUtils.getEmptyGrid(250, 250);
         PatternInterface pattern = (coord) -> {
@@ -98,10 +99,10 @@ public class Examples {
                     coord.add(Coord.of(-1, 0)), coord.add(Coord.of(0, -1))
             ));
         };
-        
+
         Solver solver = new Solver(startGrid, pattern);
         Optional<Solution> firstSolution = solver.findFirstSolution();
-        
+
         firstSolution.ifPresent(System.out::println);
     }
 

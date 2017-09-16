@@ -1,6 +1,7 @@
 package com.mollin.lightsoutsolver.core.utils;
 
 import com.mollin.lightsoutsolver.core.base.PatternInterface;
+
 import java.util.Arrays;
 import java.util.HashSet;
 
